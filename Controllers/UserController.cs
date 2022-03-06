@@ -82,6 +82,23 @@ namespace DMSapi_v2.Controllers
             _userService.DeleteUser(id, users);
             return NoContent();
         }
+        [HttpGet("{id}")]
+        public IActionResult DeleteUserByUserDetailId(string id)
+        {
+            var users = _userService.GetUserByIdForDelete(id);
+            var statusChange = users.Status;
+            if (users == null)
+            {
+                return NotFound();
+            }
+            if (statusChange == "Open")
+            {
+                statusChange = "Close";
+            }
+            users.Status = statusChange;
+            _userService.DeleteUser(id, users);
+            return NoContent();
+        }
 
         [HttpGet("{userNmae}")]
         public string CheckUser (string userNmae)

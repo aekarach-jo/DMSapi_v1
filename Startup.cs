@@ -36,6 +36,8 @@ namespace DMSapi_v2
 
             services.AddSingleton<RoomService>();
             services.AddSingleton<UserService>();
+            services.AddSingleton<UserDetailService>();
+            services.AddSingleton<InvoiceService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
