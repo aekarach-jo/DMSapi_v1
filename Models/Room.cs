@@ -15,6 +15,6 @@ namespace DMSapi_v2.Models
         public string Floor { get; set; }
         public string RoomStatus { get; set; }
         public string Status { get; set; }
-        public string UserId { get; set; }
+        public UserDetail UserDetailId { get; set; }
     }
 }

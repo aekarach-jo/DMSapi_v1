@@ -77,7 +77,6 @@ namespace DMSapi_v2.Controllers
             var data = _roomService.GetAllRoomForApi();
             var count = data.Count();
             var id = "R00" + count.ToString();
-            room.RoomId = "R00" + count.ToString();
             room.RoomId = id;
             room.Status = "Open";
             _roomService.CreateRoom(room);

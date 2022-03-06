@@ -21,6 +21,7 @@ namespace DMSapi_v2.Services
         public List<User> GetAllUser() => _user.Find(user => user.Status == "Open").ToList();
         public List<User> GetAllUserForApi() => _user.Find(user => true).ToList();
         public User GetUserById(string userId) => _user.Find(user => user.UserId == userId).FirstOrDefault();
+        public User GetUserByIdForDelete(string userDetailId) => _user.Find(user => user.UserDetailId == userDetailId).FirstOrDefault();
         public User GetUserByUserName(string userName) => _user.Find(user => user.UserName == userName).FirstOrDefault();
         public User GetUserByPermission(string permission) => _user.Find(user => user.Permission == permission).FirstOrDefault();
         public User CreateUser(User user)
@@ -29,8 +30,10 @@ namespace DMSapi_v2.Services
             return user;
         }
 
-        public void EditUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserId == userId, userBody);
-        public void DeleteUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserId == userId, userBody);
+
+// ใช้ userDetailId แทนการ แก้ไข และ ลบ หากต้องการลบพร้อมกัน
+        public void EditUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserDetailId == userId, userBody);
+        public void DeleteUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserDetailId == userId, userBody);
 
         public User CheckUserName(string userName) => _user.Find<User>(user => user.UserName == userName).FirstOrDefault();
         public User CheckUserNameAndPassword(string username,string  password) => _user.Find<User>(user => user.UserName == username && user.Password == password && user.Status == "Open").FirstOrDefault();
