@@ -38,6 +38,9 @@ namespace DMSapi_v2
             services.AddSingleton<UserService>();
             services.AddSingleton<UserDetailService>();
             services.AddSingleton<InvoiceService>();
+            services.AddSingleton<ReportService>();
+            services.AddSingleton<PaymentService>();
+            services.AddSingleton<SettingService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
