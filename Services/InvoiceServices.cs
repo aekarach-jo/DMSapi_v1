@@ -23,6 +23,14 @@ namespace DMSapi_v2.Services
         public Invoice GetInvoiceById(string invoiceId) => _invoice.Find(invoice => invoice.InvoiceId == invoiceId).FirstOrDefault();
         public Invoice GetInvoiceByInvoiceNumber(string invoiceNumber) => _invoice.Find(invoice => invoice.InvoiceNumber == invoiceNumber).FirstOrDefault();
         public List<Invoice> GetInvoiceByStatus(string invoiceStatus) => _invoice.Find(invoice => invoice.InvoiceStatus == invoiceStatus).ToList();
+         public List<Invoice> FilterInvoiceByMonth(DateTime datex1, DateTime datex2)
+        {
+             List<Invoice> data = _invoice.Find(s => s.CreationDateTime >= datex1 & s.CreationDateTime < datex2.AddDays(+1)).ToList();
+            List<Invoice> filterStatus = data.FindAll(ss => ss.Status == "Open").ToList();
+            return filterStatus;
+        }
+
+
         public Invoice CreateInvoice(Invoice invoice)
         {
             _invoice.InsertOne(invoice);

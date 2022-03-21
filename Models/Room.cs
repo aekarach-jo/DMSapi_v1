@@ -10,8 +10,8 @@ namespace DMSapi_v2.Models
         public string RoomType { get; set; }
         public string RoomNumber { get; set; }
         public string RoomRate { get; set; }
-        public string WaterMeter { get; set; }
-        public string PowerMeter { get; set; }
+        public int WaterMeter { get; set; }
+        public int PowerMeter { get; set; }
         public string Floor { get; set; }
         public string RoomStatus { get; set; }
         public string Status { get; set; }

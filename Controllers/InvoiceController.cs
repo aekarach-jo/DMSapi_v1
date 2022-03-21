@@ -53,13 +53,26 @@ namespace DMSapi_v2.Controllers
             return invoice;
         }
 
+        [HttpGet("{datex1}/{datex2}")]
+        public ActionResult<List<Invoice>> GetInvoiceByMonth(DateTime datex1, DateTime datex2)
+        {
+            var filter = _invoiceService.FilterInvoiceByMonth(datex1, datex2);
+            if (filter == null)
+            {
+                return NotFound();
+            }
+            return filter;
+        }
+
         [HttpPost]
         public Invoice CreateInvoice([FromBody] Invoice invoice)
         {
             var data = _invoiceService.GetAllInvoiceForApi();
             var count = data.Count();
             var id = "I00" + count.ToString();
+            var num = "B-" + count.ToString();
             invoice.InvoiceId = id;
+            invoice.InvoiceNumber = num;
             invoice.Status = "Open";
             _invoiceService.CreateInvoice(invoice);
             return invoice;

@@ -8,6 +8,9 @@ namespace DMSapi_v2.Models
         public string RoomCollection { get; set; }
         public string UserDetailCollection { get; set; }
         public string InvoiceCollection { get; set; }
+        public string ReportCollection { get; set; }
+        public string PaymentCollection { get; set; }
+        public string SettingCollection { get; set; }
     }
     public interface IDatabaseSetting
     {
@@ -17,6 +20,9 @@ namespace DMSapi_v2.Models
         string RoomCollection { get; set; }
         string UserDetailCollection { get; set; }
         string InvoiceCollection { get; set; }
+        string ReportCollection { get; set; }
+        string PaymentCollection { get; set; }
+        string SettingCollection { get; set; }
 
     }
 }
