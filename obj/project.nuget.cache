@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lwCy7BivVgqJjeRXFnB5h+CQpKo+q55+hAmG3XtPel1gpPvjRlUwgZppdPEdXBuhJ8ixeXB6sQP/c/zX1cwTTg==",
+  "dgSpecHash": "S/U+6ul44S+0+7gr4NYqVfveMuU/5DR/AJiJvu0smV9bP5DVFs1HQ3KrTRJpvn/Uyz17LlJ3apQhYfPFNLmDrw==",
   "success": true,
   "projectFilePath": "D:\\project\\VS_web\\DMSapi_v2\\DMSapi_v2.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,8 @@
     "C:\\Users\\cnos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\cnos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\cnos\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
-    "C:\\Users\\cnos\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    "C:\\Users\\cnos\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\cnos\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512"
   ],
   "logs": []
 }
