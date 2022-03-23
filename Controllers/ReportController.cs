@@ -41,6 +41,16 @@ namespace DMSapi_v2.Controllers
             }
             return report;
         }
+        [HttpGet("{reportRoomId}")]
+        public ActionResult<Report> GetReportByRoomId(string reportRoomId)
+        {
+            var report = _reportService.GetReportByRoomId(reportRoomId);
+            if (report == null)
+            {
+                return NotFound();
+            }
+            return report;
+        }
 
         [HttpGet("{reportStatus}")]
         public  ActionResult<List<Report>>  GetReportByStatus(string reportStatus)
