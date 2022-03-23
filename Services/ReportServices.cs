@@ -22,6 +22,7 @@ namespace DMSapi_v2.Services
         public List<Report> GetAllReportForApi() => _report.Find(report => true).ToList();
         public Report GetReportById(string reportId) => _report.Find(report => report.ReportId == reportId).FirstOrDefault();
         public Report GetReportByReportNumber(string reportNumber) => _report.Find(report => report.ReportNumber == reportNumber).FirstOrDefault();
+        public Report GetReportByRoomId(string reportRoomId) => _report.Find(report => report.RoomId == reportRoomId).FirstOrDefault();
         public List<Report> GetReportByStatus(string reportStatus) => _report.Find(report => report.ReportStatus == reportStatus).ToList();
         public Report CreateReport(Report report)
         {
