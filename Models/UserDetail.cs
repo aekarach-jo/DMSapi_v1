@@ -15,7 +15,7 @@ namespace DMSapi_v2.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string IdCard { get; set; } //เลขบัตร ปปช
-        public string UserStatus { get; set; } //สถานะ เข้าอยู่/ย้ายออกแล้ว
+        public string UserStatus { get; set; } //สถานะ เข้าอยู่/ย้ายออกแล้ว          
         public int Deposit { get; set; } //เงินมัดจำ
         public DateTime? BookingDate { get; set; } //วันที่จอง
         public DateTime? BookingDateOfStay { get; set; } //วันที่พร้อมเข้าอยู่

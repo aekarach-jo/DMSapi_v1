@@ -32,8 +32,9 @@ namespace DMSapi_v2.Services
 
 
 // ใช้ userDetailId แทนการ แก้ไข และ ลบ หากต้องการลบพร้อมกัน
-        public void EditUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserDetailId == userId, userBody);
-        public void DeleteUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserDetailId == userId, userBody);
+        public void EditUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserId == userId, userBody);
+        public void DeleteUser(string userId, User userBody) => _user.ReplaceOne(user => user.UserId == userId, userBody);
+        public void DeleteUserByUserDetailId(string UserDetailId, User userBody) => _user.ReplaceOne(user => user.UserDetailId == UserDetailId, userBody);
 
         public User CheckUserName(string userName) => _user.Find<User>(user => user.UserName == userName).FirstOrDefault();
         public User CheckUserNameAndPassword(string username,string  password) => _user.Find<User>(user => user.UserName == username && user.Password == password && user.Status == "Open").FirstOrDefault();

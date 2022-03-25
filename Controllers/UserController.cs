@@ -68,9 +68,9 @@ namespace DMSapi_v2.Controllers
         [HttpGet("{id}")]
         public IActionResult DeleteUser(string id)
         {
-            var users = _userService.GetUserById(id);
-            var statusChange = users.Status;
-            if (users == null)
+            var checkouts = _userService.GetUserById(id);
+            var statusChange = checkouts.Status;
+            if (checkouts == null)
             {
                 return NotFound();
             }
@@ -78,10 +78,12 @@ namespace DMSapi_v2.Controllers
             {
                 statusChange = "Close";
             }
-            users.Status = statusChange;
-            _userService.DeleteUser(id, users);
+            checkouts.Status = statusChange;
+            _userService.DeleteUser(id, checkouts);
             return NoContent();
         }
+
+
         [HttpGet("{id}")]
         public IActionResult DeleteUserByUserDetailId(string id)
         {
@@ -96,7 +98,7 @@ namespace DMSapi_v2.Controllers
                 statusChange = "Close";
             }
             users.Status = statusChange;
-            _userService.DeleteUser(id, users);
+            _userService.DeleteUserByUserDetailId(id, users);
             return NoContent();
         }
 

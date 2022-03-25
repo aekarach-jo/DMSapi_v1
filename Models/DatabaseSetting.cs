@@ -11,6 +11,7 @@ namespace DMSapi_v2.Models
         public string ReportCollection { get; set; }
         public string PaymentCollection { get; set; }
         public string SettingCollection { get; set; }
+        public string CheckoutCollection { get; set; }
     }
     public interface IDatabaseSetting
     {
@@ -23,6 +24,7 @@ namespace DMSapi_v2.Models
         string ReportCollection { get; set; }
         string PaymentCollection { get; set; }
         string SettingCollection { get; set; }
+        string CheckoutCollection { get; set; }
 
     }
 }
