@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project\\VS_web\\DMSapi_v2\\DMSapi_v2.csproj": {}
+    "C:\\Users\\cnos\\Documents\\Project\\DMSapi_v1\\DMSapi_v2.csproj": {}
   },
   "projects": {
-    "D:\\project\\VS_web\\DMSapi_v2\\DMSapi_v2.csproj": {
+    "C:\\Users\\cnos\\Documents\\Project\\DMSapi_v1\\DMSapi_v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project\\VS_web\\DMSapi_v2\\DMSapi_v2.csproj",
+        "projectUniqueName": "C:\\Users\\cnos\\Documents\\Project\\DMSapi_v1\\DMSapi_v2.csproj",
         "projectName": "DMSapi_v2",
-        "projectPath": "D:\\project\\VS_web\\DMSapi_v2\\DMSapi_v2.csproj",
+        "projectPath": "C:\\Users\\cnos\\Documents\\Project\\DMSapi_v1\\DMSapi_v2.csproj",
         "packagesPath": "C:\\Users\\cnos\\.nuget\\packages\\",
-        "outputPath": "D:\\project\\VS_web\\DMSapi_v2\\obj\\",
+        "outputPath": "C:\\Users\\cnos\\Documents\\Project\\DMSapi_v1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\cnos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\cnos\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,12 +57,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.15, 5.0.15]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -73,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

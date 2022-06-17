@@ -34,6 +34,8 @@ namespace DMSapi_v2
             services.AddSingleton<DatabaseSetting>(sp =>
             sp.GetRequiredService<IOptions<DatabaseSetting>>().Value);
 
+
+
             services.AddSingleton<RoomService>();
             services.AddSingleton<UserService>();
             services.AddSingleton<UserDetailService>();
@@ -43,6 +45,12 @@ namespace DMSapi_v2
             services.AddSingleton<SettingService>();
             services.AddSingleton<CheckoutService>();
 
+//             builder.Services.Configure<FormOptions>(o =>
+// {
+//     o.ValueLengthLimit = int.MaxValue;
+//     o.MultipartBodyLengthLimit = int.MaxValue;
+//     o.MemoryBufferThreshold = int.MaxValue;
+// });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -57,6 +65,13 @@ namespace DMSapi_v2
             {
                 app.UseDeveloperExceptionPage();
             }
+            // app.UseCors("CorePolicy")
+//             app.UseStaticFiles();
+// app.UseStaticFiles(new StaticFileOptions()
+// {
+//     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+//     RequestPath = new PathString("/Resources")
+// });
             app.UseCors(builder =>
                 builder.WithOrigins("*")
                 .AllowAnyHeader()

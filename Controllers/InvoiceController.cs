@@ -17,7 +17,6 @@ namespace DMSapi_v2.Controllers
         {
             _invoiceService = invoiceService;
         }
-
         [HttpGet]
         public ActionResult<List<Invoice>> GetAllInvoice() => _invoiceService.GetAllInvoice();
 
