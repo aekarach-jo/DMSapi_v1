@@ -1,19 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using DMSapi_v2.Models;
 using DMSapi_v2.Services;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+
+
+
 namespace DMSapi_v2
 {
     public class Startup
@@ -28,8 +28,8 @@ namespace DMSapi_v2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             services.Configure<DatabaseSetting>(
-            Configuration.GetSection(nameof(DatabaseSetting)));
+            services.Configure<DatabaseSetting>(
+           Configuration.GetSection(nameof(DatabaseSetting)));
 
             services.AddSingleton<DatabaseSetting>(sp =>
             sp.GetRequiredService<IOptions<DatabaseSetting>>().Value);
@@ -45,12 +45,12 @@ namespace DMSapi_v2
             services.AddSingleton<SettingService>();
             services.AddSingleton<CheckoutService>();
 
-//             builder.Services.Configure<FormOptions>(o =>
-// {
-//     o.ValueLengthLimit = int.MaxValue;
-//     o.MultipartBodyLengthLimit = int.MaxValue;
-//     o.MemoryBufferThreshold = int.MaxValue;
-// });
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -65,31 +65,31 @@ namespace DMSapi_v2
             {
                 app.UseDeveloperExceptionPage();
             }
-            // app.UseCors("CorePolicy")
-//             app.UseStaticFiles();
-// app.UseStaticFiles(new StaticFileOptions()
-// {
-//     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-//     RequestPath = new PathString("/Resources")
-// });
             app.UseCors(builder =>
                 builder.WithOrigins("*")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
             );
+
+            app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
+
             app.UseHttpsRedirection();
+
+            app.UseRouting();
+
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-            app.UseRouting();
-            app.UseCors(builder => builder
-             .SetIsOriginAllowed(origin => true)
-             .AllowAnyMethod()
-             .AllowAnyHeader()
-             .AllowCredentials());
-            app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

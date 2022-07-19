@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using DMSapi_v2.Models;
 using DMSapi_v2.Services;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace DMSapi_v2.Controllers
 {
@@ -16,6 +18,40 @@ namespace DMSapi_v2.Controllers
         public ReportController(ReportService reportService)
         {
             _reportService = reportService;
+        }
+
+
+        [HttpPost, DisableRequestSizeLimit]
+        public IActionResult Upload()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("Resources", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
+
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+
+                    return Ok(new { dbPath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(500, $"Internal Server Error");
+            }
         }
 
         [HttpGet]
@@ -53,7 +89,7 @@ namespace DMSapi_v2.Controllers
         }
 
         [HttpGet("{reportStatus}")]
-        public  ActionResult<List<Report>>  GetReportByStatus(string reportStatus)
+        public ActionResult<List<Report>> GetReportByStatus(string reportStatus)
         {
             var report = _reportService.GetReportByStatus(reportStatus);
             if (report == null)
@@ -64,7 +100,7 @@ namespace DMSapi_v2.Controllers
         }
 
         [HttpPost]
-        public Report CreateReport([FromBody] Report report)
+        public ActionResult<Report> CreateReport(Report report)
         {
             var data = _reportService.GetAllReportForApi();
             var count = data.Count();
